@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Art Catalog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #f5f5dc, #e0cda9);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 50;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .modal-content {
+      margin: 5% auto;
+      display: block;
+      max-width: 90%;
+    }
+  </style>
+</head>
+<script>
+  function searchPaintings() {
+    const input = document.getElementById('searchInput').value.toLowerCase();
+    const paintings = document.querySelectorAll('.grid > div');
+
+    paintings.forEach(painting => {
+      const title = painting.querySelector('h2').textContent.toLowerCase();
+      if (title.includes(input)) {
+        painting.style.display = '';
+      } else {
+        painting.style.display = 'none';
+      }
+    });
+  }
+</script>
+<body class="text-gray-800">
+  <div class="max-w-5xl mx-auto p-4">
+    <h1 class="text-3xl md:text-4xl font-bold text-center mb-3">The Untamed Muse</h1>
+    <h2 class="text-1xl md:text-2xl font-bold text-center mb-6">By Vinisha Ruparel</h2>
+    <div class="mb-6 text-center">
+      <input
+        type="text"
+        id="searchInput"
+        onkeyup="searchPaintings()"
+        placeholder="Search paintings by title..."
+        class="w-full max-w-md px-4 py-2 border border-gray-300 rounded-2xl shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+      />
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      
+      <!-- Painting 01 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0001.jpg" alt="Nested Together" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Nested Together</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: $200</p>
+        </div>
+      </div>
+      
+      <!-- Painting 02 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0002.jpg" alt="The Elephant-Headed God" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">The Elephant-Headed God</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: 15,000/-</p>
+        </div>
+      </div>
+
+      <!-- Painting 03 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0003.jpg" alt="Pair of Sunshine Wings" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Pair of Sunshine Wings</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: $200</p>
+        </div>
+      </div>
+
+      <!-- Painting 04 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0004.jpg" alt="Violet Flutter" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Violet Flutter</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: 16,000/-</p>
+        </div>
+      </div>
+
+      <!-- Painting 05 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0005.jpg" alt="King and Queen of the Jungle" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">King and Queen of the Jungle</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: $200</p>
+        </div>
+      </div>
+
+      <!-- Painting 06 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0006.jpg" alt="Whispers in the Nest" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Whispers in the Nest</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: $200</p>
+        </div>
+      </div>
+
+      <!-- Painting 07 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0007.jpg" alt="Hummingbird's Cosmic Journey  " class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Hummingbird's Cosmic Journey</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: $200</p>
+        </div>
+      </div>
+
+      <!-- Painting 08 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0008.jpg" alt="Gentle Giants Together" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Gentle Giants Together</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: 18,000/-</p>
+        </div>
+      </div>
+
+      <!-- Painting 09-->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0009.jpg" alt="Orange Bloom, Abstract Dream" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Orange Bloom, Abstract Dream</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: 16,000/-</p>
+        </div>
+      </div>
+
+      <!-- Painting 10 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0010.jpg" alt="Flamingos in Paradise" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Flamingos in Paradise</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: 14,000/-</p>
+        </div>
+      </div>
+
+      <!-- Painting 11 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0011.jpg" alt="White Majesty" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">White Majesty</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: $200</p>
+        </div>
+      </div>
+
+      <!-- Painting 12 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0012.jpg" alt="Echoes of Rama in the Wild" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Echoes of Rama in the Wild</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: $200</p>
+        </div>
+      </div>
+
+      <!-- Painting 13 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0013.jpg" alt="Shades of Flamingo" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Shades of Flamingo</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: 10,000/-</p>
+        </div>
+      </div>
+
+      <!-- Painting 14 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0014.jpg" alt="Nandi's Adornment" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Nandi's Adornment</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: 11,000/-</p>
+        </div>
+      </div>
+
+      <!-- Painting 15 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0015.jpg" alt="Bushy Tail in a Wonderland" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Bushy Tail in a Wonderland</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: $200</p>
+        </div>
+      </div>
+
+      <!-- Painting 16 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0016.jpg" alt="Two Gentle Souls" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Two Gentle Souls</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: $200</p>
+        </div>
+      </div>
+
+      <!-- Painting 17 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0017.jpg" alt="Nandi's Blessing by the Temple" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Nandi's Blessing by the Temple</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: 11,000/-</p>
+        </div>
+      </div>
+
+      <!-- Painting 18 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0018.jpg" alt="Wild Stripes" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Wild Stripes</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: $200</p>
+        </div>
+      </div>
+
+      <!-- Painting 19 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0019.jpg" alt="White Whispers" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">White Whispers</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: $200</p>
+        </div>
+      </div>
+
+      <!-- Painting 20 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0020.jpg" alt="The Eagle's Insight" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">The Eagle's Insight</h2>
+          <p class="text-sm text-gray-600">Size: 1.5x1.5</p>
+          <p class="text-sm text-gray-600">Price: 11,000/-</p>
+        </div>
+      </div>
+
+      <!-- Painting 21 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0021.jpg" alt="A Squirrel's Discovery" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">A Squirrel's Discovery</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: $200</p>
+        </div>
+      </div>
+
+      <!-- Painting 22 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0022.jpg" alt="A Tigress and Her Cubs" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">A Tigress and Her Cubs</h2>
+          <p class="text-sm text-gray-600">Size: 4x6</p>
+          <p class="text-sm text-gray-600">Price: $200</p>
+        </div>
+      </div>
+
+      <!-- Painting 23 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0023.jpg" alt="Family in the Canopy" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Family in the Canopy</h2>
+          <p class="text-sm text-gray-600">Size: 4x6</p>
+          <p class="text-sm text-gray-600">Price: $200</p>
+        </div>
+      </div>
+
+      <!-- Painting 24 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0024.jpg" alt="The Lion's Legacy" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">The Lion's Legacy</h2>
+          <p class="text-sm text-gray-600">Size: 4.5x4.5</p>
+          <p class="text-sm text-gray-600">Price: $200</p>
+        </div>
+      </div>
+
+      <!-- Painting 25 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0025.jpg" alt="Where the Sun Meets the Wind" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Where the Sun Meets the Wind</h2>
+          <p class="text-sm text-gray-600">Size: 4x6</p>
+          <p class="text-sm text-gray-600">Price: 80,000/-</p>
+        </div>
+      </div>
+
+      <!-- Painting 26 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0026.jpg" alt="Wings of Green and Gold" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Wings of Green and Gold</h2>
+          <p class="text-sm text-gray-600">Size: 1.5x1.5</p>
+          <p class="text-sm text-gray-600">Price: $200</p>
+        </div>
+      </div>
+
+      <!-- Painting 27 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0027.jpg" alt="Amber Eye, Feathered Frame" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Amber Eye, Feathered Frame</h2>
+          <p class="text-sm text-gray-600">Size: 1.5x1.5</p>
+          <p class="text-sm text-gray-600">Price: $200</p>
+        </div>
+      </div>
+
+      <!-- Painting 28 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0028.jpg" alt="Eye of Azure and Gold" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Eye of Azure and Gold</h2>
+          <p class="text-sm text-gray-600">Size: 1.5x1.5</p>
+          <p class="text-sm text-gray-600">Price: $200</p>
+        </div>
+      </div>
+
+      <!-- Painting 29 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0029.jpg" alt="Eyes of the Forest" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Eyes of the Forest</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: $200</p>
+        </div>
+      </div>
+
+      <!-- Painting 30 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0030.jpg" alt="Beneath the Blue" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Beneath the Blue</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: $200</p>
+        </div>
+      </div>
+      
+      <!-- Painting 31 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0031.jpg" alt="Jungle Serenade" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Jungle Serenade</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: $200</p>
+        </div>
+      </div>
+
+      <!-- Painting 32 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0032.jpg" alt="The Moon's Silent Companion" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">The Moon's Silent Companion</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: 14,000/-</p>
+        </div>
+      </div>
+
+      <!-- Painting 33 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0033.jpg" alt="Two Bunnies, One Big Treat" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Two Bunnies, One Big Treat</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: 12,000/-</p>
+        </div>
+      </div>
+
+      <!-- Painting 34 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0034.jpg" alt="Two in the Wildwood" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Two in the Wildwood</h2>
+          <p class="text-sm text-gray-600">Size: 2x2</p>
+          <p class="text-sm text-gray-600">Price: 21,000/-</p>
+        </div>
+      </div>
+
+      <!-- Painting 35 -->
+      <div class="bg-white cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+        <img src="image_jpeg/IMG0035.jpg" alt="Swans in Paradise" class="w-full h-auto object-cover" onclick="openModal(this.src)">
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Swans in Paradise</h2>
+          <p class="text-sm text-gray-600">Size: 2X2</p>
+          <p class="text-sm text-gray-600">Price: 21,000/-</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Fullscreen Modal -->
+  <div id="imgModal" class="modal" onclick="closeModal()">
+    <img class="modal-content" id="modalImg">
+  </div>
+
+  <script>
+    function openModal(src) {
+      document.getElementById('imgModal').style.display = 'block';
+      document.getElementById('modalImg').src = src;
+    }
+
+    function closeModal() {
+      document.getElementById('imgModal').style.display = 'none';
+    }
+  </script>  
+</body>
+</html>
